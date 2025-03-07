@@ -1,0 +1,19 @@
+{
+  "name": "e-commerce_web_sauji",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  },
+  "workspaces": [
+    "apps/*",
+    "common/*"
+  ]
+}
