@@ -6,24 +6,26 @@ import {
   BiSolidUserCheck,
 } from "react-icons/bi";
 import { Flex, Image, Menu, ConfigProvider, Typography, Space } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FaCircleUser, FaUsers, FaUserShield } from "react-icons/fa6";
 import { VscThreeBars } from "react-icons/vsc";
 import Logo from "../../assets/main_logo.png";
 import { SaujiRoutes } from "../routes/routes";
+
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Get current location
 
   const onClick = (e) => {
     if (e.key !== "/logo") {
       navigate(e.key);
     }
   };
+
   const menuItems = [
     {
       key: "/logo",
       label: <Image src={Logo} preview={false} style={{ height: 70 }} />,
-
       style: {
         textAlign: "center",
         height: 70,
@@ -46,18 +48,9 @@ const NavBar = () => {
       icon: <FaUserShield style={{ fontSize: "20px" }} />,
       label: "KYC",
       children: [
-        {
-          key: "/kyc/pending",
-          label: "Pending",
-        },
-        {
-          key: "/kyc/approved",
-          label: "Approved",
-        },
-        {
-          key: "/kyc/decline",
-          label: "Decline",
-        },
+        { key: "/kyc/pending", label: "Pending" },
+        { key: "/kyc/approved", label: "Approved" },
+        { key: "/kyc/decline", label: "Decline" },
       ],
     },
     {
@@ -85,7 +78,7 @@ const NavBar = () => {
         },
         components: {
           Menu: {
-            itemSelectedBg: "#fffff",
+            itemSelectedBg: "#ffffff",
             itemSelectedColor: "#8E6CEF",
           },
         },
@@ -97,6 +90,7 @@ const NavBar = () => {
           style={{ width: 250 }}
           mode="inline"
           items={menuItems}
+          selectedKeys={[location.pathname]} // Dynamically select menu item based on location
         />
         <Flex vertical style={{ width: "100vw" }}>
           <div

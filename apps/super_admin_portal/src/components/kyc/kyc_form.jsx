@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { BreadCrumb, PageTitle, SaujiInput, SaujiLabel, SaujiLayout } from "ui";
 import { useMutation } from "react-query";
+import { adminFormServices } from "service";
 
 const KYCFORM = () => {
   const location = useLocation();
